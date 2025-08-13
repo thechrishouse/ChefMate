@@ -67,7 +67,7 @@ export default function AuthPage() {
                         </div>
                     </li>
                 </ul>
-                {/* Dummy stats could be imported using dummy data (API) */}
+                {/* Dummy stats could be imported using  (API) */}
                 <div className='flex justify-around'>
                     <div className='flex flex-col space-y-1'>
                         <b className='text-2xl text-green-600'>50K+</b>
