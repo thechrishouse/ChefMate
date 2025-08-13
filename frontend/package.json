@@ -5,18 +5,23 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev-clean": "rimraf node_modules/.vite && npm run dev",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.53.0",
+    "@tailwindcss/vite": "^4.1.11",
     "@tanstack/react-query": "^5.84.1",
     "axios": "^1.11.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.62.0",
-    "react-router-dom": "^7.7.1"
+    "react-icons": "^5.5.0",
+    "react-router-dom": "^7.7.1",
+    "rimraf": "^6.0.1",
+    "tailwindcss": "^4.1.11"
   },
   "devDependencies": {
     "@eslint/js": "^9.30.1",
