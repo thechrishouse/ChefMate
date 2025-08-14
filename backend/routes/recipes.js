@@ -14,6 +14,33 @@ router.get('/', async (req, res) => {
     });
 });
 
+router.get('/:recipeId', async (req, res) => {
+    // Gets all the recipes from the database
+    const recipeId = Number(req.params.recipeId);
+    console.log(recipeId)
+
+    try {
+        // Use Prisma to delete the todo with the specified ID
+        const recipe = await prisma.Recipe.findUnique({
+            where: {
+                id: recipeId, // Match the todo based on its unique ID
+            },
+        });
+
+        // Respond with a success status and confirmation of the deletion
+        res.status(200).json({
+            success: true,
+            recipe: recipe, // Return the deleted todo's ID for reference
+        });
+    } catch (e) {
+        // Handle any errors that occur during the deletion process
+        res.status(500).json({
+            success: false,
+            message: "Something went wrong, please try again later",
+        });
+    }
+});
+
 router.post('/', async (req, res) => {
     // Destructure `name` and `description` from the request body
     const { title, description, ingredients, instructions, prepTime, cookTime } = req.body;

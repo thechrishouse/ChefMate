@@ -1,93 +1,89 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
-    provider = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-    provider  = "postgresql"
-    url       = env("DATABASE_URL")
-    directUrl = env("DIRECT_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model User {
-    id           Int    @id @default(autoincrement())
-    email        String @unique
-    passwordHash String
-    firstName    String
-    lastName     String
-
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-
-    // Relations
-    recipes       Recipe[]
-    savedRecipes  SavedRecipe[]
-    cookedRecipes CookedRecipe[]
+  id            Int            @id @default(autoincrement())
+  email         String         @unique
+  username      String         @unique
+  passwordHash  String
+  firstName     String
+  lastName      String
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  cookedRecipes CookedRecipe[]
+  recipes       Recipe[]
+  savedRecipes  SavedRecipe[]
 }
 
 model Recipe {
-    id          Int        @id @default(autoincrement())
-    title       String
-    description String?
-    imageUrl    String?
-    prepTime    Int? // minutes
-    cookTime    Int? // minutes
-    servings    Int?
-    difficulty  Difficulty @default(EASY)
-    isPublic    Boolean    @default(true)
+  id           Int            @id @default(autoincrement())
+  title        String
+  description  String?
+  imageUrl     String?
+  prepTime     Int?
+  cookTime     Int?
+  servings     Int?
+  difficulty   Difficulty     @default(EASY)
+  isPublic     Boolean        @default(true)
+  ingredients  Json?
+  instructions Json?
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  userId       Int
+  cookedBy     CookedRecipe[]
+  user         User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  savedBy      SavedRecipe[]
 
-    // Recipe Content
-    ingredients  Json?
-    instructions Json?
-
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-
-    // Foreign Keys
-    userId Int
-
-    // Relations
-    user     User           @relation(fields: [userId], references: [id], onDelete: Cascade)
-    savedBy  SavedRecipe[]
-    cookedBy CookedRecipe[]
+  @@index([createdAt])
+  @@index([difficulty])
+  @@index([isPublic])
+  @@index([userId])
 }
 
 model SavedRecipe {
-    id Int @id @default(autoincrement())
+  id       Int      @id @default(autoincrement())
+  savedAt  DateTime @default(now())
+  userId   Int
+  recipeId Int
+  recipe   Recipe   @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-    savedAt DateTime @default(now())
-
-    // Foreign Keys
-    userId   Int
-    recipeId Int
-
-    // Relations
-    user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-    recipe Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+  @@unique([userId, recipeId])
+  @@index([userId])
 }
 
 model CookedRecipe {
-    id     Int  @id @default(autoincrement())
-    rating Int? // Personal rating 1-5 
+  id       Int      @id @default(autoincrement())
+  rating   Int?
+  notes    String?
+  cookedAt DateTime @default(now())
+  userId   Int
+  recipeId Int
+  recipe   Recipe   @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-    cookedAt DateTime @default(now())
+  @@index([recipeId])
+  @@index([userId])
+}
 
-    // Foreign Keys
-    userId   Int
-    recipeId Int
-
-    // Relations
-    user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-    recipe Recipe @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+/// This model contains row level security and requires additional setup for migrations. Visit https://pris.ly/d/row-level-security for more info.
+model test_user_table {
+  id         BigInt   @id @default(autoincrement())
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  email      String?
+  password   String?
+  user_name  String?
 }
 
 enum Difficulty {
-    EASY
-    MEDIUM
-    HARD
+  EASY
+  MEDIUM
+  HARD
 }
