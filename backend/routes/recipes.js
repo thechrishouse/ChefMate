@@ -1,155 +1,161 @@
-import express from "express";
+import express from 'express';
+import {
+    getAllRecipes,
+    getRecipe,
+    createRecipe,
+    updateRecipe,
+    deleteRecipe,
+    saveRecipe,
+    unsaveRecipe,
+    cookRecipe,
+    getSavedRecipes,
+    getCookedRecipes,
+} from '../controllers/recipeController.js';
+import { authenticateToken, optionalAuth } from '../middleware/auth.js';
+import { validateRecipeId } from '../middleware/validation.js';
 
+// Create a new Express router instance.
 const router = express.Router();
-import prisma from "../db/index.js";
+
+// ==============================
+// PUBLIC ROUTES
+// These endpoints are publicly accessible.
+// `optionalAuth` is used to attach user context if a token is present,
+// allowing for personalized responses (e.g., showing if a recipe is already saved).
+// ==============================
+
+/**
+ * Route to get a list of all recipes.
+ * @name GET /api/recipes
+ * @function
+ * @memberof module:recipeRoutes
+ * @param {string} path - Express path
+ * @param {Function} optionalAuth - Middleware to optionally authenticate the user.
+ * @param {Function} getAllRecipes - The controller function to handle fetching all recipes.
+ */
+router.get('/', optionalAuth, getAllRecipes);
+
+/**
+ * Route to get a single recipe by its ID.
+ * @name GET /api/recipes/:id
+ * @function
+ * @memberof module:recipeRoutes
+ * @param {string} path - Express path with a dynamic ID parameter.
+ * @param {Function} validateRecipeId - Middleware to ensure the recipe ID is a valid number.
+ * @param {Function} optionalAuth - Middleware to optionally authenticate the user.
+ * @param {Function} getRecipe - The controller function to handle fetching a single recipe.
+ */
+router.get('/:id', validateRecipeId, optionalAuth, getRecipe);
+
+// ==============================
+// PROTECTED ROUTES (CRUD)
+// These endpoints require a valid access token to perform actions.
+// `authenticateToken` middleware is used to enforce authentication.
+// ==============================
+
+/**
+ * Route to create a new recipe.
+ * @name POST /api/recipes
+ * @function
+ * @memberof module:recipeRoutes
+ * @param {string} path - Express path
+ * @param {Function} authenticateToken - Middleware to ensure the user is authenticated.
+ * @param {Function} createRecipe - The controller function to handle recipe creation.
+ */
+router.post('/', authenticateToken, createRecipe);
+
+/**
+ * Route to update an existing recipe by its ID.
+ * @name PUT /api/recipes/:id
+ * @function
+ * @memberof module:recipeRoutes
+ * @param {string} path - Express path with a dynamic ID parameter.
+ * @param {Function} validateRecipeId - Middleware to ensure the recipe ID is valid.
+ * @param {Function} authenticateToken - Middleware to ensure the user is authenticated.
+ * @param {Function} updateRecipe - The controller function to handle recipe updates.
+ */
+router.put('/:id', validateRecipeId, authenticateToken, updateRecipe);
+
+/**
+ * Route to delete a recipe by its ID.
+ * @name DELETE /api/recipes/:id
+ * @function
+ * @memberof module:recipeRoutes
+ * @param {string} path - Express path with a dynamic ID parameter.
+ * @param {Function} validateRecipeId - Middleware to ensure the recipe ID is valid.
+ * @param {Function} authenticateToken - Middleware to ensure the user is authenticated.
+ * @param {Function} deleteRecipe - The controller function to handle recipe deletion.
+ */
+router.delete('/:id', validateRecipeId, authenticateToken, deleteRecipe);
+
+// ==============================
+// USER INTERACTION ROUTES
+// These endpoints allow authenticated users to interact with recipes.
+// `authenticateToken` is required for these actions.
+// ==============================
+
+/**
+ * Route to save a recipe for the authenticated user.
+ * @name POST /api/recipes/:id/save
+ * @function
+ * @memberof module:recipeRoutes
+ * @param {string} path - Express path with a dynamic ID parameter.
+ * @param {Function} validateRecipeId - Middleware to ensure the recipe ID is valid.
+ * @param {Function} authenticateToken - Middleware to ensure the user is authenticated.
+ * @param {Function} saveRecipe - The controller function to handle saving a recipe.
+ */
+router.post('/:id/save', validateRecipeId, authenticateToken, saveRecipe);
+
+/**
+ * Route to unsave a recipe for the authenticated user.
+ * @name DELETE /api/recipes/:id/save
+ * @function
+ * @memberof module:recipeRoutes
+ * @param {string} path - Express path with a dynamic ID parameter.
+ * @param {Function} validateRecipeId - Middleware to ensure the recipe ID is valid.
+ * @param {Function} authenticateToken - Middleware to ensure the user is authenticated.
+ * @param {Function} unsaveRecipe - The controller function to handle unsaving a recipe.
+ */
+router.delete('/:id/save', validateRecipeId, authenticateToken, unsaveRecipe);
 
 
-router.get('/', async (req, res) => {
-    // Gets all the recipes from the database
-    const recipes = await prisma.Recipe.findMany();
-    // Responds back to the client with json with a success status and the todos array
-    res.status(200).json({
-        success: true,
-        recipes,
-    });
-});
+/**
+ * Route to mark a recipe as cooked for the authenticated user.
+ * @name POST /api/recipes/:id/cook
+ * @function
+ * @memberof module:recipeRoutes
+ * @param {string} path - Express path with a dynamic ID parameter.
+ * @param {Function} validateRecipeId - Middleware to ensure the recipe ID is valid.
+ * @param {Function} authenticateToken - Middleware to ensure the user is authenticated.
+ * @param {Function} cookRecipe - The controller function to handle marking a recipe as cooked.
+ */
+router.post('/:id/cook', validateRecipeId, authenticateToken, cookRecipe);
 
-router.get('/:recipeId', async (req, res) => {
-    // Gets all the recipes from the database
-    const recipeId = Number(req.params.recipeId);
-    console.log(recipeId)
+// ==============================
+// USER RECIPE COLLECTIONS
+// These endpoints retrieve lists of recipes interacted with by the user.
+// ==============================
 
-    try {
-        // Use Prisma to delete the todo with the specified ID
-        const recipe = await prisma.Recipe.findUnique({
-            where: {
-                id: recipeId, // Match the todo based on its unique ID
-            },
-        });
+/**
+ * Route to get a list of all recipes saved by the authenticated user.
+ * @name GET /api/recipes/saved/list
+ * @function
+ * @memberof module:recipeRoutes
+ * @param {string} path - Express path
+ * @param {Function} authenticateToken - Middleware to ensure the user is authenticated.
+ * @param {Function} getSavedRecipes - The controller function to fetch saved recipes.
+ */
+router.get('/saved/list', authenticateToken, getSavedRecipes);
 
-        // Respond with a success status and confirmation of the deletion
-        res.status(200).json({
-            success: true,
-            recipe: recipe, // Return the deleted todo's ID for reference
-        });
-    } catch (e) {
-        // Handle any errors that occur during the deletion process
-        res.status(500).json({
-            success: false,
-            message: "Something went wrong, please try again later",
-        });
-    }
-});
-
-router.post('/', async (req, res) => {
-    // Destructure `name` and `description` from the request body
-    const { title, description, ingredients, instructions, prepTime, cookTime } = req.body;
-    try {
-        // Use Prisma to create a new recipe entry in the database
-        const recipe = await prisma.Recipe.create({
-            data: {
-                title,               // Set the title of the recipe from the request
-                description,        // Set the description of the todo from the request
-                ingredients,
-                instructions,
-                prepTime,
-                cookTime,
-                userId: req.user.sub, // Assign the user ID
-            },
-        });
-
-        // Check if the new todo was created successfully
-        if (recipe) {
-            // Respond with a success status and include the ID of the newly created todo
-            res.status(201).json({
-                success: true,
-                recipe_id: recipe.id,
-            });
-        } else {
-            // Respond with a failure status if todo creation failed
-            res.status(500).json({
-                success: false,
-                message: "Failed to create new recipe",
-            });
-        }
-    } catch (e) {
-        // Log the error for debugging purposes
-        console.log(e);
-        // Respond with a generic error message if something goes wrong
-        res.status(500).json({
-            success: false,
-            message: "Something went wrong, please try again later",
-        });
-    }
-});
-
-router.put('/:recipeId', async (req, res) => {
-    // Extract the recipe ID from the URL params and convert to a number
-    const recipeId = Number(req.params.recipeId);
-
-    // Destructure fields from the request body
-    const { title, description, ingredients, instructions, prepTime, cookTime } = req.body;
-
-    try {
-        // Update the recipe in the database
-        const recipe = await prisma.Recipe.update({
-            where: {
-                id: recipeId,
-                // userId: req.user.sub // Optional: ensure only the owner can update
-            },
-            data: {
-                title,
-                description,
-                ingredients,
-                instructions,
-                prepTime,
-                cookTime
-            }
-        });
-
-        // If update successful, return updated recipe
-        res.status(200).json({
-            success: true,
-            recipe
-        });
-    } catch (e) {
-        console.error(e);
-
-        // If the recipe doesn't exist, Prisma throws an error
-        res.status(500).json({
-            success: false,
-            message: "Something went wrong, please try again later"
-        });
-    }
-});
-
-
-router.delete("/:recipeId", async (req, res) => {
-    // Extract the `todoId` from the route parameter and convert it to a number
-    const recipeId = Number(req.params.recipeId);
-
-    try {
-        // Use Prisma to delete the todo with the specified ID
-        await prisma.Recipe.delete({
-            where: {
-                id: recipeId, // Match the todo based on its unique ID
-            },
-        });
-
-        // Respond with a success status and confirmation of the deletion
-        res.status(200).json({
-            success: true,
-            recipe: recipeId, // Return the deleted todo's ID for reference
-        });
-    } catch (e) {
-        // Handle any errors that occur during the deletion process
-        res.status(500).json({
-            success: false,
-            message: "Something went wrong, please try again later",
-        });
-    }
-});
-
-
+/**
+ * Route to get a list of all recipes cooked by the authenticated user.
+ * @name GET /api/recipes/cooked/list
+ * @function
+ * @memberof module:recipeRoutes
+ * @param {string} path - Express path
+ * @param {Function} authenticateToken - Middleware to ensure the user is authenticated.
+ * @param {Function} getCookedRecipes - The controller function to fetch cooked recipes.
+ */
+router.get('/cooked/list', authenticateToken, getCookedRecipes);
 
 export default router;
