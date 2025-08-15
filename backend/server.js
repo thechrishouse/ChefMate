@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import recipeRouter from "./routes/recipes.js";
 import chatRouter from "./routes/chatbot.js";
-import authRouter from "./routes/auth.js";
+import authRouter from "./routes/authentication.js";
 import verifyToken from "./middleware/auth.js";
 
 const app = express();
