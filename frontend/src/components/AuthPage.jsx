@@ -31,7 +31,7 @@ export default function AuthPage() {
             localStorage.setItem('user', JSON.stringify(response.data.user));
             
             showAlert({ show: true, message: "Login successful!" });
-            navigate("/recipes");
+            navigate("/dashboard");
         } catch (error) {
             const errorMessage = error.response?.data?.error || "Login failed. Please try again.";
             showAlert({ show: true, message: errorMessage });
@@ -55,8 +55,8 @@ export default function AuthPage() {
             
             showAlert({ show: true, message: "Signup successful! Welcome to CookMate!" });
             reset();
-            // Navigate to recipes page after successful signup
-            navigate("/recipes");
+            // Navigate to dashboard after successful signup
+            navigate("/dashboard");
         } catch (error) {
             const errorMessage = error.response?.data?.error || "Signup failed. Please try again.";
             showAlert({ show: true, message: errorMessage });
