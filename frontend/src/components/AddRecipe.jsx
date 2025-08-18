@@ -19,14 +19,14 @@ export default function AddRecipe() {
     };
 
     return (
-        <section className='py-20 px-30 text-gray-800'>
+        <section className='text-gray-800 min-w-3xl'>
             <div className='space-y-5 mb-10'>
-                <h2 className='text-4xl font-bold'>Add New Recipe</h2>
+                <h2 className='text-2xl font-bold'>Add New Recipe</h2>
                 <p>Share your culinary creation with the CookMate community</p>
             </div>
             {/* Recipe form */}
             <div className='p-6 border-1 border-gray-900/30 rounded-sm'>
-                <h3 className='text-2xl mb-10 font-bold '>Recipe Information</h3>
+                <h3 className='text-xl mb-10 font-bold '>Recipe Information</h3>
                 <form action="submit" className='space-y-8'>
                     <div className='flex flex-col justify-center space-y-5'>
                         <label className='block mb-2 font-medium'>Recipe Image</label>
