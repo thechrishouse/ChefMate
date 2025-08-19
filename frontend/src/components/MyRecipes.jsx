@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import RecipeGrid from './RecipeGrid';
-import UserStats from './UserStats';
+import { RecipeGrid } from '../components';
 import { fetchRandomRecipes } from '../api/recipes';
 
 export default function MyRecipes() {
@@ -21,7 +20,7 @@ export default function MyRecipes() {
   }, []);
 
   return (
-    <div className=''>
+    <div>
       <RecipeGrid key={recipes.idMeal} loading={loading} recipes={recipes} title="My Recipe Collections" subtitle="Manage and organize your saved recipes" />
     </div>
   );
