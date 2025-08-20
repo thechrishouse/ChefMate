@@ -3,9 +3,9 @@
 export default function Home() {
 
     return(
-        <section className='py-20 px-10 text-center'>
+        <section id="home" className='py-20 px-10 text-center'>
             <div className='text-center'>
-                <span className='px-2 py-1 font-semibold bg-green-300 rounded-full'>Your personal cooking companion</span>
+                <span className='px-4 py-1 font-semibold bg-green-300 rounded-full'>Your personal cooking companion</span>
                 <h2 className='text-7xl my-5 font-extrabold'>Discover, Cook & Share <span className='text-green-700 block'>Amazing Recipes</span></h2>
                 <p>Build your personal cookbook, discover new flavors from around the world, and share your culinary creations with a community of food lovers</p>
                 <div className='mt-10 space-x-6 transition-all ease-in-out duration-200'>

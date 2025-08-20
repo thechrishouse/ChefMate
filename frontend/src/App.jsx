@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { Header, HomePage, AuthPage, AddRecipe, DashboardPage, DashboardHome, MyRecipes } from './components';
+import { Header, HomePage, AboutPage, AuthPage, AddRecipe, DashboardPage, DashboardHome, MyRecipes } from './components';
 
 
 export default function App() {
@@ -8,6 +8,7 @@ export default function App() {
       <Header />
       <Routes>
         <Route path='/' element={<HomePage />} />
+        <Route path='/about' element={<AboutPage /> }></Route>
         <Route path="/auth" element={<AuthPage />} />
 
         {/* Dashboard page w/nested routes */}
