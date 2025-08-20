@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import { fetchRandomRecipes } from "../api/recipes";
-import RecipeGrid from "../components/RecipeGrid";
+import { useState, useEffect } from 'react';
+import { fetchRandomRecipes } from '../api/recipes';
+import { RecipeGrid } from '../components';
 
 export default function DashboardHome() {
   const [recipes, setRecipes] = useState([]);
@@ -17,7 +17,7 @@ export default function DashboardHome() {
 
   return (
     <div>
-      <RecipeGrid recipes={recipes} title="Discover New Recipes" loading={loading} />
+      <RecipeGrid recipes={recipes} title='Discover New Recipes' loading={loading} />
     </div>
   );
 }
