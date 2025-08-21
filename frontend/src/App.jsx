@@ -1,14 +1,23 @@
 import { Routes, Route } from 'react-router-dom';
-import Home from './components/Home';
-import AuthPage from './components/AuthPage';
-
+import { Header, HomePage, AboutPage, AuthPage, AddRecipe, DashboardPage, DashboardHome, MyRecipes } from './components';
 
 
 export default function App() {
   return (
-    <Routes>
-      <Route path='/' element={<Home />} />
-      <Route path="/auth" element={<AuthPage />} />
-    </Routes>
+    <>
+      <Header />
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route path='/about' element={<AboutPage /> }></Route>
+        <Route path="/auth" element={<AuthPage />} />
+
+        {/* Dashboard page w/nested routes */}
+        <Route path='/dashboard' element={<DashboardPage />}>
+          <Route index element={<DashboardHome />} />
+          <Route path='add-recipe' element={<AddRecipe />}></Route>
+          <Route path='my-recipes' element={<MyRecipes />}></Route>
+        </Route>
+      </Routes>
+    </>
   );
 }
