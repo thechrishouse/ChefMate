@@ -10,6 +10,7 @@ export default function App() {
         <Route path='/' element={<HomePage />} />
         <Route path='/about' element={<AboutPage /> }></Route>
         <Route path="/auth" element={<AuthPage />} />
+        <Route path="/contact-us" element={<ContactUs />} />
 
         {/* Dashboard page w/nested routes */}
         <Route path='/dashboard' element={<DashboardPage />}>
