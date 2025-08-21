@@ -28,6 +28,7 @@ CookMate is a full-stack web application that allows users to create, save, and 
 - PostgreSQL database
 - JWT Authentication
 - RESTful API architecture
+- Supabase
 
 ## Project Structure
 
