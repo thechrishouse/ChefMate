@@ -35,7 +35,7 @@ export default function ContactUs() {
           <p>Available in the app for, for quick questions.</p>
         </div>
       </section>
-      <section class="flex" className="inline-grid text-gray-800 min-w-3xl">
+      <section class="flex" className=" text-gray-800 min-w-3xl">
         <div className="space-y-5 mt-20 mb-5">
           <h3 className="text-2xl font-bold">Contact Us</h3>
         </div>
@@ -44,33 +44,51 @@ export default function ContactUs() {
             {/* Form Goes Here */}
             <form
               action="submit"
-              className="p-6 border-1 border-gray-900/30 rounded-sm"
+              className="p-6 border-gray-900/30 rounded-sm"
               onSubmit={handleSubmit(onSubmit)}
             >
+              <label className="font-medium"> Full Name</label>
+              <br />
               <input
                 label="Full Name"
-                className="border-1"
-                defaultValue={'Full Name'}
+                className="p-2 border-1 border-gray-800/40 rounded-md"
+                defaultValue={'Jane Somename'}
                 {...register('fullName', { required: true, maxLength: 80 })}
               />
+              <br />
+              <label className="font-medium"> Company </label>
+              <br />
               <input
-                className="border-1"
-                defaultValue={'Company'}
+                className="p-2 border-1 border-gray-800/40 rounded-md"
+                defaultValue={'Company A Inc'}
                 {...register('company', { required: false, maxLength: 50 })}
               />
+              <br />
+              <label className="font-medium"> Email Address </label>
+              <br />
               <input
-                className="border-1"
-                defaultValue={'Email Address'}
+                className="p-2 border-1 border-gray-800/40 rounded-md"
+                defaultValue={'thecooljane@companyainc.co'}
                 {...register('email', { required: true, maxLength: 50 })}
               />
-              <input
-                className="border-1"
-                defaultValue={'Message'}
+              <br />
+              <label className="font-medium"> Message </label>
+              <br />
+              <textarea
+                className="p-2 border-1 border-gray-800/40 rounded-md"
+                defaultValue={"I'd like to reach out to you because..."}
                 {...register('message', { required: true, maxLength: 500 })}
               />
               {/* errors will return when field validation fails  */}
               {errors.exampleRequired && <p>This field is required</p>}
-              <input className="border-1" type="button" value="submit" />
+              <br />
+              <button
+                type="button"
+                value="submit"
+                className="px-5 py-3 bg-green-600 text-white rounded hover:bg-green-700"
+              >
+                Send Message
+              </button>
             </form>
           </div>
         </div>
