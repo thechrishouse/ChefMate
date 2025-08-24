@@ -1,4 +1,5 @@
 import UserStats from './UserStats';
+import { Link } from 'react-router-dom';
 
 export default function RecipeGrid({ recipes, title, subtitle, loading = false }) {
   if (loading) {
@@ -14,7 +15,7 @@ export default function RecipeGrid({ recipes, title, subtitle, loading = false }
   }
 
   return (
-    <section className="min-w-3xl">
+    <section className="min-w-3xl max-w-6xl">
       {title && <h2 className="text-2xl text-gray-900 font-bold">{title}</h2>}
       {subtitle && <h4 className='mb-6'>{subtitle}</h4>}
       <UserStats />
@@ -28,24 +29,25 @@ export default function RecipeGrid({ recipes, title, subtitle, loading = false }
       </div>
       <div className="my-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {recipes.map((recipe) => (
-          <div
-            key={recipe.idMeal} 
-            className="bg-white shadow rounded-lg overflow-hidden hover:shadow-lg cursor-pointer transition"
-          >
-            <img
-              src={recipe.strMealThumb}
-              alt={recipe.strMeal}
-              className="w-full h-40 object-cover"
-            />
-            <div className="p-4">
-              <h3 className="text-md text-lg text-gray-900 font-medium mb-2">{recipe.strMeal}</h3>
-              <div className='mb-4 flex justify-between'>
-                <span>by: Chef Name</span>
-                <span>{recipe.cookTime}45 min</span>
+          <Link key={recipe.idMeal} to={`/recipe/${recipe.idMeal}`}>
+            <div
+              className="bg-white shadow rounded-lg overflow-hidden hover:shadow-lg cursor-pointer transition"
+            >
+              <img
+                src={recipe.strMealThumb}
+                alt={recipe.strMeal}
+                className="w-full h-40 object-cover"
+              />
+              <div className="p-4">
+                <h3 className="text-md text-lg text-gray-900 font-medium mb-2">{recipe.strMeal}</h3>
+                <div className='mb-4 flex justify-between'>
+                  <span>by: Chef Name</span>
+                  <span>{recipe.cookTime}45 min</span>
+                </div>
+                <span className='px-4 py-1 bg-green-300 rounded-full'>{recipe.strArea}</span>
               </div>
-              <span className='px-4 py-1 bg-green-300 rounded-full'>{recipe.strArea}</span>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </section>
