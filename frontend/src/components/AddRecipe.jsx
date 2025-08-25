@@ -103,7 +103,7 @@ export default function AddRecipe() {
                                 <p>Click to upload an image or drag and drop</p>
                                 <p>Any image format, up to 10MB</p>
                             </label>
-                            
+
                             {/* Hidden input for file selection */}
                             <input
                                 type="file"
@@ -139,7 +139,7 @@ export default function AddRecipe() {
                                         value={ingredient}
                                         onChange={(e) => handleIngredientChange(index, e.target.value)}
                                         placeholder={`Ingredient ${index + 1}`}
-                                        className='flex-1 p-2 border border-gray-700 rounded-sm'
+                                        className='flex-1 p-2 border-2 border-gray-500/30 rounded-sm'
                                     />
                                     {ingredients.length > 1 && (
                                         <button
@@ -157,7 +157,7 @@ export default function AddRecipe() {
                         <button
                             type='button'
                             onClick={addIngredient}
-                            className='px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700'
+                            className='w-[20%] bg-gray-900 text-gray-200 font-semibold px-4 py-2 border-2 border-gray-500/30 rounded hover:bg-gray-950 cursor-pointer'
                         >
                             Add Ingredient
                         </button>
@@ -174,7 +174,7 @@ export default function AddRecipe() {
                                         value={step}
                                         onChange={(e) => handleStepChange(index, e.target.value)}
                                         placeholder={`Step ${index + 1}`}
-                                        className='flex-1 p-2 border border-gray-700 rounded-sm'
+                                        className='flex-1 p-2 border-2 border-gray-500/30 rounded-sm'
                                     />
                                     {steps.length > 1 && (
                                         <button
@@ -192,9 +192,16 @@ export default function AddRecipe() {
                         <button
                             type='button'
                             onClick={addStep}
-                            className='px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700'
+                            className='w-[20%] bg-gray-900 text-gray-200 font-semibold px-4 py-2 border-2 border-gray-500/30 rounded hover:bg-gray-950 cursor-pointer'
                         >
                             Add Step
+                        </button>
+
+                        <button
+                            type="submit"
+                            className="w-[25%] self-end mt-6 px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+                        >
+                            Submit Recipe
                         </button>
                     </div>
                 </form>
