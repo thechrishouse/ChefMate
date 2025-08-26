@@ -8,6 +8,8 @@ import DashboardHome from './DashboardHome';
 import MyRecipes from './MyRecipes';
 import AddRecipe from './AddRecipe';
 import RecipeGrid from './RecipeGrid';
+import RecipePage from './RecipePage';
 import UserStats from './UserStats';
 
-export { Header, HomePage, AboutPage, ContactPage, AuthPage, DashboardPage, DashboardHome, MyRecipes, AddRecipe, RecipeGrid, UserStats }
+
+export { Header, HomePage, AboutPage, ContactPage, AuthPage, DashboardPage, DashboardHome, MyRecipes, AddRecipe, RecipeGrid, RecipePage, UserStats }
