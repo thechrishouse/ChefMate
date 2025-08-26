@@ -113,10 +113,10 @@ Frontend (.env):
 
 ## Development Team
 
-- Christopher House - [@thechrishouse](https://github.com/thechrishouse/)
-- Kiraah G - [@Krashberry](https://github.com/Krashberry)
 - Bryan Lopez - [@blopez024](https://github.com/blopez024)
 - Binu K - [@BinuBims](https://github.com/BinuBims)
+- Christopher House - [@thechrishouse](https://github.com/thechrishouse/)
+- Kiraah G - [@Krashberry](https://github.com/Krashberry)
 
 ## Contributing
 
