@@ -9,7 +9,7 @@ import { developers } from '../constants';
 export default function AboutPage() {
 
     return (
-        <section id="about" className="px-20 py-10">
+        <section id="about" className="px-20 py-10 bg-cream">
             <div className="text-center">
                 <span className='pr-4 pl-1 py-1 font-semibold bg-green-300 rounded-full'><span className='mx-2'><MdPeople className='inline' /><MdPeople className='inline' /></span>Meet the Team</span>
                 <h2 className='text-7xl my-5 font-extrabold'>The Chefs Behind<span className='text-green-700 block'>ChefMate</span></h2>

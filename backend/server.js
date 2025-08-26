@@ -4,6 +4,7 @@
  * @module server
  */
 
+import 'dotenv/config';  // // Load environment variables from .env for local development. This ensures JWT_SECRET and other vars are available when running server.js.
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
@@ -80,6 +81,11 @@ app.get('/health', (req, res) => {
     });
 });
 
+//// Message to confirm server is running in development AND production
+app.get('/', (req, res) => {
+    res.send('ChefMate backend is up and running!');
+  });
+  
 
 
 // ==============================
@@ -95,3 +101,4 @@ app.listen(PORT, () => {
     console.log(`⛑️  Health check endpoint http://localhost:${PORT}/health`);
     // console.log(`🔌 API endpoint http://localhost:${PORT}/api`);
 });
+

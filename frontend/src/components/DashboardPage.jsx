@@ -1,11 +1,21 @@
 import { NavLink, Outlet } from 'react-router-dom';
+import { useState, useEffect} from 'react';
 
 export default function Dashboard() {
+  const [user, setUser] = useState({firstName: ''});
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, [])
+
   return (
     <div className="flex min-h-screen text-gray-500">
       {/* Sidebar */}
       <aside className="w-64 bg-gray-100 py-10 px-4 flex flex-col gap-6">
-        <h1 className="mb-5 text-2xl text-gray-900 font-bold">Welcome, {"{user.firstName}"}</h1>
+        <h1 className="mb-5 text-2xl text-gray-900 font-bold">Welcome, {user.firstName}</h1>
         <nav className="flex flex-col gap-1">
           <NavLink
             to="/dashboard"
