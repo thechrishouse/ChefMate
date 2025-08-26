@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FiUpload, FiTrash2 } from 'react-icons/fi';
+import api from '../axios-instance';
 
 
 export default function AddRecipe() {
@@ -77,8 +78,37 @@ export default function AddRecipe() {
         }
     };
 
+    const submitRecipe = async (e) => {
+        e.preventDefault(); // prevent default form submit
+
+        try {
+            const formData = new FormData();
+            formData.append("name", e.target.name.value);
+            formData.append("description", e.target.description.value);
+            formData.append("ingredients", JSON.stringify(ingredients));
+            formData.append("steps", JSON.stringify(steps));
+
+            if (image) {
+                formData.append("image", image); // send image as file
+            }
+
+            const response = await api.post("/api/recipes", formData, {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            });
+
+            console.log("Recipe submitted:", response.data);
+            alert("Recipe submitted successfully!");
+        } catch (error) {
+            console.error("Error submitting recipe:", error);
+            alert("Failed to submit recipe.");
+        }
+    };
+
+
     return (
-        <section className='text-gray-800 min-w-3xl'>
+        <section className='text-gray-800 bg-cream min-w-3xl'>
             <div className='space-y-5 mb-10'>
                 <h2 className='text-2xl font-bold'>Add New Recipe</h2>
                 <p>Share your culinary creation with the CookMate community</p>
