@@ -84,7 +84,7 @@ export default function AddRecipe() {
                 <p>Share your culinary creation with the CookMate community</p>
             </div>
             {/* Recipe form */}
-            <div className='p-6 border-1 border-gray-900/30 rounded-sm'>
+            <div className='p-6 border border-gray-900/30 rounded-sm'>
                 <h3 className='text-xl mb-10 font-bold '>Recipe Information</h3>
                 <form action='submit'>
                     <div className='flex flex-col justify-center space-y-5'>
@@ -95,7 +95,7 @@ export default function AddRecipe() {
                             onDragOver={handleDragOver}
                             onDragLeave={handleDragLeave}
                             onDrop={handleDrop}
-                            className={`flex flex-col text-green-900/70 border-1 border-dashed border-gray-700 rounded-md py-10 justify-center items-center cursor-pointer ${dragActive ? "bg-green-100/30 border-green-500" : ""
+                            className={`flex flex-col text-green-900/70 border border-dashed border-gray-700 rounded-md py-10 justify-center items-center cursor-pointer ${dragActive ? "bg-green-100/30 border-green-500" : ""
                                 }`}
                         >
                             <label htmlFor="recipeImage" className="flex flex-col items-center cursor-pointer">
@@ -123,11 +123,11 @@ export default function AddRecipe() {
 
                         {/* Recipe Name */}
                         <label className='font-medium m-1'>What's the name of the new recipe?</label>
-                        <input type='text' className='w-[60%] border-1 border-gray-700 rounded-sm p-2' placeholder="e.g., Grandma's Chocolate Chip Cookies" />
+                        <input type='text' className='w-[60%] border border-gray-700 rounded-sm p-2' placeholder="e.g., Grandma's Chocolate Chip Cookies" />
 
                         {/* Description input */}
                         <label className='font-medium m-1' htmlFor=''>Description</label>
-                        <textarea className='p-2 border-1 border-gray-800/40 rounded-md' name='description' id='description' row={5} placeholder='Describe your recipe, what makes it special, and any background story...'></textarea>
+                        <textarea className='p-2 border border-gray-800/40 rounded-md' name='description' id='description' row={5} placeholder='Describe your recipe, what makes it special, and any background story...'></textarea>
 
                         {/* Ingredients Section */}
                         <label className='font-medium m-1'>Ingredients</label>

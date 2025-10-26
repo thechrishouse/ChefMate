@@ -13,7 +13,7 @@ export default function Header() {
             <div>
                 <NavLink to='/' className='flex justify-between items-center space-x-4 text-green-700'>
                     <PiChefHatBold size={52} className='cursor-pointer' />
-                    <h1 className='font-bold text-2xl cursor-pointer'>CookMate</h1>
+                    <h1 className='font-bold text-2xl cursor-pointer'>ChefMate</h1>
                 </NavLink>
             </div>
 

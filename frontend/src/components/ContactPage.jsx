@@ -23,9 +23,9 @@ export default function ContactUs() {
           </p>
           <h4 className="text-xl mt-5 mb-1 font-bold ">Email Us</h4>
           <p>
-            hello@cookmate.com
+            hello@chefmate.com
             <br />
-            support@cookmate.com
+            support@chefmate.com
           </p>
           <h4 className="text-xl mt-5 mb-1 font-bold ">Response Time</h4>
           <p>Usually within 24 hours, Mon-Fri, 9AM-6PM PST</p>
@@ -49,7 +49,7 @@ export default function ContactUs() {
               <br />
               <input
                 label="Full Name"
-                className="p-2 border-1 border-gray-800/40 rounded-md"
+                className="p-2 border border-gray-800/40 rounded-md"
                 defaultValue={'Jane Somename'}
                 {...register('fullName', { required: true, maxLength: 80 })}
               />
@@ -57,7 +57,7 @@ export default function ContactUs() {
               <label className="font-medium"> Company </label>
               <br />
               <input
-                className="p-2 border-1 border-gray-800/40 rounded-md"
+                className="p-2 border border-gray-800/40 rounded-md"
                 defaultValue={'Company A Inc'}
                 {...register('company', { required: false, maxLength: 50 })}
               />
@@ -65,7 +65,7 @@ export default function ContactUs() {
               <label className="font-medium"> Email Address </label>
               <br />
               <input
-                className="p-2 border-1 border-gray-800/40 rounded-md"
+                className="p-2 border border-gray-800/40 rounded-md"
                 defaultValue={'thecooljane@companyainc.co'}
                 {...register('email', { required: true, maxLength: 50 })}
               />
@@ -73,7 +73,7 @@ export default function ContactUs() {
               <label className="font-medium"> Message </label>
               <br />
               <textarea
-                className="p-2 border-1 border-gray-800/40 rounded-md"
+                className="p-2 border border-gray-800/40 rounded-md"
                 defaultValue={"I'd like to reach out to you because..."}
                 {...register('message', { required: true, maxLength: 500 })}
               />

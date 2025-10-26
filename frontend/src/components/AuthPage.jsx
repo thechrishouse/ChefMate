@@ -53,7 +53,7 @@ export default function AuthPage() {
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('user', JSON.stringify(response.data.user));
             
-            showAlert({ show: true, message: "Signup successful! Welcome to CookMate!" });
+            showAlert({ show: true, message: "Signup successful! Welcome to ChefMate!" });
             reset();
             // Navigate to dashboard after successful signup
             navigate("/dashboard");
@@ -80,7 +80,7 @@ export default function AuthPage() {
             <div className="w-[55%] min-w-[400px] px-8 py-20">
                 <span className='rounded-full py-1 px-3 bg-amber-100 font-semibold'>Join the community</span>
                 <h2 className="text-4xl mt-2 mb-10 font-semibold">
-                    Welcome to <br /><span className="text-green-600">CookMate</span>
+                    Welcome to <br /><span className="text-green-600">ChefMate</span>
                 </h2>
                 <p className="mb-10">
                     Join thousands of home cooks sharing recipes, planning meals, and creating amazing culinary experiences together.
@@ -146,7 +146,7 @@ export default function AuthPage() {
                         </div>
 
                         <h3 className='font-semibold text-2xl'>
-                            {isLogin ? 'Welcome Back!' : 'Join CookMate!'}
+                            {isLogin ? 'Welcome Back!' : 'Join ChefMate!'}
                         </h3>
                         <h4>
                             {isLogin ? (

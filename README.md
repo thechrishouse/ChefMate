@@ -1,6 +1,9 @@
-# CookMate
+# ChefMate
+## Where Home Cooks Become Chefs
 
-CookMate is a full-stack web application that allows users to create, save, and share recipes with the community. Built with modern technologies, it offers a seamless experience for managing your personal cookbook and connecting with other food enthusiasts.
+Originally built as CookMate during my team fellowship with The Knowledge House, I forked and rebranded the project as ChefMate to reflect my creative direction and continue developing the frontend and UX vision.
+
+ChefMate is a full-stack web application that allows users to create, save, and share recipes with the community. Built with React, it offers a seamless experience for managing your personal cookbook and connecting with other food enthusiasts.
 
 ## Features
 
@@ -66,8 +69,8 @@ CookMate/
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/Little-Friendly/CookMate.git
-cd CookMate
+git clone https://github.com/Little-Friendly/ChefMate.git
+cd ChefMate
 ```
 
 2. Backend Setup:

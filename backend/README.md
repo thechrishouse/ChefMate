@@ -1,6 +1,6 @@
-# CookMate Backend
+# ChefMate Backend
 
-This is the backend server for CookMate, a recipe management and sharing platform. Built with Node.js, Express, and PostgreSQL with Prisma as the ORM.
+This is the backend server for ChefMate, a recipe management and sharing platform. Built with Node.js, Express, and PostgreSQL with Prisma as the ORM.
 
 ## Features
 
@@ -71,8 +71,8 @@ backend/
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/Little-Friendly/CookMate.git
-   cd CookMate/backend
+   git clone https://github.com/Little-Friendly/ChefMate.git
+   cd ChefMate/backend
    ```
 
 2. Install dependencies:
@@ -86,8 +86,8 @@ backend/
 
    ```
    PORT=8080
-   DATABASE_URL="postgresql://user:password@localhost:5432/cookmate"
-   DIRECT_URL="postgresql://user:password@localhost:5432/cookmate"
+   DATABASE_URL="postgresql://user:password@localhost:5432/chefmate"
+   DIRECT_URL="postgresql://user:password@localhost:5432/chefmate"
    JWT_SECRET="your-secret-key"
    ```
 
