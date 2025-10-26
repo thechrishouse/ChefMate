@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 
-export default function ContactUs() {
+export default function ContactPage() {
   const {
     register,
     handleSubmit,
@@ -12,9 +12,9 @@ export default function ContactUs() {
   console.log(watch('company'));
 
   return (
-    <div class="flex content-center justify-center row-span-1 grid-cols-2">
-      <section class="flex" className="text-gray-800 min-w-3xl">
-        <div className="space-y-5 mt-20 mb-1">
+    <section className="px-20 py-10">
+      <div className="flex justify-between items-center text-gray-800 min-w-3xl">
+        <div className="space-y-5">
           <h3 className="text-2xl font-bold">Get in Touch</h3>
           <p>
             We're here to help and answer any questions you might have.
@@ -32,17 +32,14 @@ export default function ContactUs() {
           <h4 className="text-xl mt-5 mb-1 font-bold ">Live Chat</h4>
           <p>Available in the app for, for quick questions.</p>
         </div>
-      </section>
-      <section class="flex" className=" text-gray-800 min-w-3xl">
-        <div className="space-y-5 mt-20 mb-5">
-          <h3 className="text-2xl font-bold">Contact Us</h3>
-        </div>
-        <div className="px-5 sm:w-2/3 lg:w-1/2 mx-auto">
-          <div className="rounded-lg shadow-lg bg-white -mt-24 -mb-5 py-10 md:py-12 px-4 md:px-6">
+        <div className="flex text-gray-800">
+
+          <div className="rounded-lg shadow-lg border-2 border-gray-500/30 bg-white py-10 md:py-12 px-4 md:px-6">
             {/* Form Goes Here */}
+            <h3 className="text-2xl font-bold mx-2">Send Us a Message</h3>
             <form
               action="submit"
-              className="p-6 border-gray-900/30 rounded-sm"
+              className="p-6 rounded-sm"
               onSubmit={handleSubmit(onSubmit)}
             >
               <label className="font-medium"> Full Name</label>
@@ -89,8 +86,9 @@ export default function ContactUs() {
               </button>
             </form>
           </div>
+
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }

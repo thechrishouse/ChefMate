@@ -48,7 +48,7 @@ export default function Header() {
                                     : `${linkClasses} px-6 py-2 rounded-md bg-green-600 text-white transition shadow-[0px_3px_5px_rgba(0,0,0,0.5)] hover:scale-[1.01]]`
                             }
                         >
-                            Sign Up
+                            Log In
                         </NavLink>
                     </li>
                 </ul>
