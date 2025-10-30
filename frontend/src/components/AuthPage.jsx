@@ -91,9 +91,33 @@ export default function AuthPage() {
         </p>
 
         {/* Feature Section */}
-        <ul className="space-y-6">
+        <ul className="space-y-5 mb-10 list-none">
           <li>
-            <div className="flex justify-start items-center gap-3">
+            <div className="flex justify-start align-center gap-3">
+              <div className="flex justify-center items-center p-3 rounded-full bg-amber-100">
+                <FaEnvelope className="m-auto text-gray-900/50 text-3xl" />
+              </div>
+              <div>
+                <b>Save and Organize Recipes</b>
+                <p>Build your personal cookbook with recipes you love</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div className="flex justify-start align-center gap-3">
+              <div className="flex justify-center items-center p-3 rounded-full bg-amber-100">
+                <IoMdPerson className="m-auto text-gray-900/50 text-3xl" />
+              </div>
+              <div>
+                <b>Connect with other Chefs</b>
+                <p>
+                  Share recipes and discover new favorites from the community
+                </p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div className="flex justify-start align-center gap-3">
               <div className="flex justify-center items-center p-3 rounded-full bg-amber-100">
                 <PiChefHatBold className="m-auto text-gray-900/50 text-3xl" />
               </div>
