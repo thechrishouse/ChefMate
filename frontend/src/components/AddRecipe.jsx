@@ -111,7 +111,7 @@ export default function AddRecipe() {
         <section className='text-gray-800 bg-cream min-w-3xl'>
             <div className='space-y-5 mb-10'>
                 <h2 className='text-2xl font-bold'>Add New Recipe</h2>
-                <p>Share your culinary creation with the CookMate community</p>
+                <p>Share your culinary creation with the ChefMate community</p>
             </div>
             {/* Recipe form */}
             <div className='p-6 border border-gray-900/30 rounded-sm'>

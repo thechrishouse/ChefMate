@@ -19,7 +19,7 @@ export default function AboutPage() {
                     <button className='font-semibold py-3 px-8 cursor-pointer rounded-sm bg-gray-100 text-green-800 shadow-md hover:scale-[1.01]'><span><MdCoffee className="inline mr-4 " /></span>Buy Us A Coffee</button>
                 </div>
             </div>
-            <div className='my-30 text-center'>
+            {/* <div className='my-30 text-center'>
                 <h3 className='text-3xl font-bold mb-10'>Our Development Team</h3>
                 <p className='text-lg text-gray-600 font-medium'>Each team member brings unique skills and perspectives to create the best recipe management experience</p>
             </div>
@@ -39,7 +39,7 @@ export default function AboutPage() {
                         </div>
                     )
                 })}
-            </div>
+            </div> */}
         </section>
     )
 }
