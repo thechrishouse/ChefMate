@@ -8,7 +8,7 @@ import { IoMdPerson } from "react-icons/io";
 import { PiChefHatBold } from "react-icons/pi";
 
 export default function AuthPage() {
-  const [isLogin, setIsLogin] = useState(true); // start on login
+  const [isLogin, setIsLogin] = useState(true);
   const [showPassword, setShowPassword] = useState(false);
   const [alert, showAlert] = useState({ message: "", show: false });
 

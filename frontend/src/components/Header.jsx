@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { PiChefHat, PiChefHatBold } from "react-icons/pi";
+import { PiChefHatBold } from "react-icons/pi";
 
 export default function Header() {
 
