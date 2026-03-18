@@ -9,7 +9,7 @@ import { developers } from '../constants';
 export default function AboutPage() {
 
     return (
-        <section id="about" className="px-20 py-10 bg-cream">
+        <section id="about" className="mx-auto px-20 py-10 bg-cream">
             <div className="text-center">
                 <span className='pr-4 pl-1 py-1 font-semibold bg-green-300 rounded-full'><span className='mx-2'><MdPeople className='inline' /><MdPeople className='inline' /></span>Meet the Team</span>
                 <h2 className='text-7xl my-5 font-extrabold'>The Chefs Behind<span className='text-green-700 block'>ChefMate</span></h2>
@@ -19,14 +19,14 @@ export default function AboutPage() {
                     <button className='font-semibold py-3 px-8 cursor-pointer rounded-sm bg-gray-100 text-green-800 shadow-md hover:scale-[1.01]'><span><MdCoffee className="inline mr-4 " /></span>Buy Us A Coffee</button>
                 </div>
             </div>
-            {/* <div className='my-30 text-center'>
+            <div className='my-30 text-center'>
                 <h3 className='text-3xl font-bold mb-10'>Our Development Team</h3>
                 <p className='text-lg text-gray-600 font-medium'>Each team member brings unique skills and perspectives to create the best recipe management experience</p>
             </div>
-            <div className='flex justify-between items-center gap-2 px-10 w-full'>
+            <div className='flex flex-wrap justify-around mx-auto items-center w-full'>
                 {developers.map((dev, dex) => {
                     return (
-                        <div key={`developer-${dex}`} className='min-w-[230px] rounded-t-3xl shadow-[0px_-3px_10px_rgba(0,0,0,0.5)]'>
+                        <div key={`developer-${dex}`} className='w-[300px] lg:w-[250px] my-3 rounded-t-3xl shadow-[0px_-3px_10px_rgba(0,0,0,0.5)]'>
                             <img src={dev.image} alt="Profile picture" className='w-full h-60 object-cover rounded-t-3xl' />
                             <div className='w-full text-center py-4'>
                                 <span className='text-lg font-semibold text-gray-700'>{dev.name}</span>
@@ -39,7 +39,7 @@ export default function AboutPage() {
                         </div>
                     )
                 })}
-            </div> */}
+            </div>
         </section>
     )
 }
