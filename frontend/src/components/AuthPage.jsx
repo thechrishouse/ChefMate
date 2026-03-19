@@ -82,7 +82,7 @@ export default function AuthPage() {
       {/* Left Column */}
       <div className="w-[55%] min-w-[400px] px-8 py-20">
         <span className="rounded-full py-1 px-3 bg-amber-100 font-semibold">Join the community</span>
-        <h2 className="text-4xl mt-2 mb-10 font-semibold">
+        <h2 className="y">
           Welcome to <br />
           <span className="text-green-600">ChefMate</span>
         </h2>

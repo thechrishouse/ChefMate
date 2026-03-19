@@ -15,8 +15,8 @@ export default function AboutPage() {
                 <h2 className='text-7xl my-5 font-extrabold'>The Chefs Behind<span className='text-green-700 block'>ChefMate</span></h2>
                 <p className='text-xl text-gray-600 font-medium'>We're a passionate team of developers who love both coding and cooking. <br />Our mission is to make recipe management delightful for home cooks everywhere.</p>
                 <div className='mt-10 space-x-6 transition-all ease-in-out duration-200'>
-                    <button className='font-semibold py-3 px-8 cursor-pointer rounded-sm text-gray-100 bg-green-600 shadow-md hover:scale-[1.01]'><span><IoMdHeart className="inline mr-4 " /></span>Join Our Team</button>
-                    <button className='font-semibold py-3 px-8 cursor-pointer rounded-sm bg-gray-100 text-green-800 shadow-md hover:scale-[1.01]'><span><MdCoffee className="inline mr-4 " /></span>Buy Us A Coffee</button>
+                    <button className='font-semibold py-3 px-8 cursor-pointer rounded-sm text-gray-100 bg-green-600 shadow-md hover:scale-[1.03]'><span><IoMdHeart className="inline mr-4 " /></span>Join Our Team</button>
+                    <button className='font-semibold py-3 px-8 cursor-pointer rounded-sm bg-gray-900 text-green-400 shadow-md hover:scale-[1.03]'><span><MdCoffee className="inline mr-4 " /></span>Buy Us A Coffee</button>
                 </div>
             </div>
             <div className='my-30 text-center'>

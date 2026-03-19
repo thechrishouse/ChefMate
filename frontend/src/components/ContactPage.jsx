@@ -1,4 +1,7 @@
 import { useForm } from 'react-hook-form';
+import { FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
+import { IoMdPerson } from "react-icons/io";
+import { PiChefHatBold } from "react-icons/pi";
 
 export default function ContactPage() {
   const {
@@ -14,24 +17,46 @@ export default function ContactPage() {
   return (
     <section className="px-20 py-10">
       <div className="flex justify-between items-center text-gray-800 min-w-3xl">
-        <div className="space-y-5">
-          <h3 className="text-2xl font-bold">Get in Touch</h3>
-          <p>
-            We're here to help and answer any questions you might have.
-            <br />
-            We look forward to hearing from you!
-          </p>
-          <h4 className="text-xl mt-5 mb-1 font-bold ">Email Us</h4>
-          <p>
-            hello@chefmate.com
-            <br />
-            support@chefmate.com
-          </p>
-          <h4 className="text-xl mt-5 mb-1 font-bold ">Response Time</h4>
-          <p>Usually within 24 hours, Mon-Fri, 9AM-6PM PST</p>
-          <h4 className="text-xl mt-5 mb-1 font-bold ">Live Chat</h4>
-          <p>Available in the app for, for quick questions.</p>
-        </div>
+        {/* Feature Section */}
+        <ul className="space-y-5 mb-10 list-none">
+          <h2 className='text-4xl mt-2 mb-10 font-semibold'>Get In Touch</h2>
+          <h3>We're here to help and answer any questions you might have. We look forward to hearing from you!</h3>
+          <li>
+            <div className="flex justify-start align-center gap-3">
+              <div className="flex justify-center items-center p-3 rounded-full bg-amber-100">
+                <FaEnvelope className="m-auto text-gray-900/50 text-3xl" />
+              </div>
+              <div>
+                <b>Save and Organize Recipes</b>
+                <p>Build your personal cookbook with recipes you love</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div className="flex justify-start align-center gap-3">
+              <div className="flex justify-center items-center p-3 rounded-full bg-amber-100">
+                <IoMdPerson className="m-auto text-gray-900/50 text-3xl" />
+              </div>
+              <div>
+                <b>Connect with other Chefs</b>
+                <p>
+                  Share recipes and discover new favorites from the community
+                </p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div className="flex justify-start align-center gap-3">
+              <div className="flex justify-center items-center p-3 rounded-full bg-amber-100">
+                <PiChefHatBold className="m-auto text-gray-900/50 text-3xl" />
+              </div>
+              <div>
+                <b>Smart Meal Planning</b>
+                <p>Plan your meals and generate shopping lists automatically</p>
+              </div>
+            </div>
+          </li>
+        </ul>
         <div className="flex text-gray-800">
 
           <div className="rounded-lg shadow-lg border-2 border-gray-500/30 bg-white py-10 md:py-12 px-4 md:px-6">
