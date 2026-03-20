@@ -27,8 +27,8 @@ export default function ContactPage() {
                 <FaEnvelope className="m-auto text-gray-900/50 text-3xl" />
               </div>
               <div>
-                <b>Save and Organize Recipes</b>
-                <p>Build your personal cookbook with recipes you love</p>
+                <b>Email Us</b>
+                <p>hello@chefmate.com</p>
               </div>
             </div>
           </li>
@@ -38,10 +38,9 @@ export default function ContactPage() {
                 <IoMdPerson className="m-auto text-gray-900/50 text-3xl" />
               </div>
               <div>
-                <b>Connect with other Chefs</b>
-                <p>
-                  Share recipes and discover new favorites from the community
-                </p>
+                <b>Response Time</b>
+                <p>Usually within 24 hours</p>
+                <p>Mon-Fri, 9AM-6PM PST</p>
               </div>
             </div>
           </li>
@@ -51,7 +50,7 @@ export default function ContactPage() {
                 <PiChefHatBold className="m-auto text-gray-900/50 text-3xl" />
               </div>
               <div>
-                <b>Smart Meal Planning</b>
+                <b>Live Chat</b>
                 <p>Plan your meals and generate shopping lists automatically</p>
               </div>
             </div>
